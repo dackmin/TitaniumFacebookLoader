@@ -5,7 +5,7 @@ function FacebookLoader(options){
 	this.height = options.height || 50;
 	this.top = options.top || false;
 	this.bottom = options.bottom || false;
-	this.font = options.font || false;
+	this.font = options.font || false;
 	this.loadingText = options.loadingText || "Loading";
 	this.errorText = options.errorText || "Error";
 	this.loadingColor = options.loadingColor || "#4bcc1f";
@@ -28,6 +28,10 @@ function FacebookLoader(options){
 	
 	if(this.font != false) this.loaderLabel.font = this.font;
 	
+};
+
+FacebookLoader.prototype.createLoader = function(){
+	return this.loaderView;
 };
 
 FacebookLoader.prototype.setWidth = function(width){
