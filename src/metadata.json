@@ -1,1 +1,1 @@
-{"exports": ["UI.createView", "UI.createLabel", "API.info", "UI.createView", "UI.createLabel", "API.info"]}
+{"exports": ["UI.createView", "UI.createLabel", "UI.createView", "UI.createLabel"]}

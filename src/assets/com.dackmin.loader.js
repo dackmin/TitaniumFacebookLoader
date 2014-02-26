@@ -2,10 +2,10 @@ function FacebookLoader(options){
 	
 	//Options
 	this.width = options.width || "100%";
-	this.height = options.height || 50;
-	this.top = options.top || false;
-	this.bottom = options.bottom || false;
-	this.font = options.font || false;
+	this.height = options.height || 25;
+	this.top = options.top || "not";
+	this.bottom = options.bottom || "not";
+	this.font = options.font || "not";
 	this.zIndex = options.zIndex || 0;
 	this.loadingText = options.loadingText || "Loading";
 	this.errorText = options.errorText || "Error";
@@ -20,11 +20,12 @@ function FacebookLoader(options){
 		backgroundColor : this.loadingColor,
 		zIndex : this.zIndex,
 		width : this.width,
-		height : this.height
+		height : this.height,
+		layout : "horizontal"
 	});
 	
-	if(this.top != false) this.loaderView.top = this.top;
-	if(this.bottom != false) this.loaderView.bottom = this.bottom;
+	if(this.top != "not") this.loaderView.top = this.top;
+	if(this.bottom != "not") this.loaderView.bottom = this.bottom;
 	
 	this.loaderLabel = Ti.UI.createLabel({
 		text : this.loadingText,
@@ -33,7 +34,7 @@ function FacebookLoader(options){
 	});
 	this.loaderView.add(this.loaderLabel);
 	
-	if(this.font != false) this.loaderLabel.font = this.font;
+	if(this.font != "not") this.loaderLabel.font = this.font;
 	
 };
 
