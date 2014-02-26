@@ -7,6 +7,7 @@ function FacebookLoader(options){
 	this.bottom = options.bottom || "not";
 	this.font = options.font || "not";
 	this.zIndex = options.zIndex || 0;
+	this.visible = options.visible || false;
 	this.loadingText = options.loadingText || "Loading";
 	this.errorText = options.errorText || "Error";
 	this.loadingColor = options.loadingColor || "#4bcc1f";
@@ -21,7 +22,7 @@ function FacebookLoader(options){
 		zIndex : this.zIndex,
 		width : this.width,
 		height : this.height,
-		layout : "horizontal"
+		visible : this.visible
 	});
 	
 	if(this.top != "not") this.loaderView.top = this.top;
@@ -84,6 +85,16 @@ FacebookLoader.prototype.error = function(){
 	this.loaderView.backgroundColor = this.errorColor;
 	this.loaderLabel.text = this.errorText;
 	this.loaderLabel.color = this.errorTextColor;
+};
+
+FacebookLoader.prototype.show = function(){
+	this.visible = true;
+	this.loaderView.show();
+};
+
+FacebookLoader.prototype.hide = function(){
+	this.visible = false;
+	this.loaderView.hide();
 };
 
 exports.FacebookLoader = FacebookLoader;
