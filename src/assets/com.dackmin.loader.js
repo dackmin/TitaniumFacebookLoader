@@ -5,6 +5,7 @@ function FacebookLoader(options){
 	this.height = options.height || 50;
 	this.top = options.top || false;
 	this.bottom = options.bottom || false;
+	this.font = options.font || false;
 	this.loadingText = options.loadingText || "Loading";
 	this.errorText = options.errorText || "Error";
 	this.loadingColor = options.loadingColor || "#4bcc1f";
@@ -15,6 +16,7 @@ function FacebookLoader(options){
 	this.loaderView = Ti.UI.createView({
 		backgroundColor : this.loadingColor
 	});
+	
 	if(this.top != false) this.loaderView.top = this.top;
 	if(this.bottom != false) this.loaderView.bottom = this.bottom;
 	
@@ -23,6 +25,8 @@ function FacebookLoader(options){
 		textAlign : "center"
 	});
 	this.loaderView.add(this.loaderLabel);
+	
+	if(this.font != false) this.loaderLabel.font = this.font;
 	
 };
 
@@ -46,6 +50,11 @@ FacebookLoader.prototype.setBottom = function(bottom){
 	this.loaderView.bottom = bottom;
 };
 
+FacebookLoader.prototype.setFont = function(font){
+	this.font = font;
+	this.loaderLabel.font = font;
+},
+
 FacebookLoader.prototype.toggle = function(){
 	if(this.state == "loading") this.error();
 	else this.load();
@@ -54,11 +63,13 @@ FacebookLoader.prototype.toggle = function(){
 FacebookLoader.prototype.load = function(){
 	this.state = "loading";
 	this.loaderView.backgroundColor = this.loadingColor;
+	this.loaderLabel.text = this.loadingText;
 };
 
 FacebookLoader.prototype.error = function(){
 	this.state = "error";
 	this.loaderView.backgroundColor = this.errorColor;
+	this.loaderLabel.text = this.errorText;
 };
 
 exports.FacebookLoader = FacebookLoader;
