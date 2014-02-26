@@ -53,7 +53,7 @@ FacebookLoader.prototype.setBottom = function(bottom){
 FacebookLoader.prototype.setFont = function(font){
 	this.font = font;
 	this.loaderLabel.font = font;
-},
+};
 
 FacebookLoader.prototype.toggle = function(){
 	if(this.state == "loading") this.error();
