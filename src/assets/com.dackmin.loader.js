@@ -6,6 +6,7 @@ function FacebookLoader(options){
 	this.top = options.top || false;
 	this.bottom = options.bottom || false;
 	this.font = options.font || false;
+	this.zIndex = options.zIndex || 0;
 	this.loadingText = options.loadingText || "Loading";
 	this.errorText = options.errorText || "Error";
 	this.loadingColor = options.loadingColor || "#4bcc1f";
@@ -14,7 +15,10 @@ function FacebookLoader(options){
 	
 	//Internal
 	this.loaderView = Ti.UI.createView({
-		backgroundColor : this.loadingColor
+		backgroundColor : this.loadingColor,
+		zIndex : this.zIndex,
+		width : this.width,
+		height : this.height
 	});
 	
 	if(this.top != false) this.loaderView.top = this.top;
